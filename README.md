@@ -21,6 +21,7 @@ The research plan can be read [here](research%20plan.txt)
     *   [Why did you choose the model you evaluated, and what are its strengths or limitations?](#why-did-you-choose-the-model-you-evaluated-and-what-are-its-strengths-or-limitations)
 6.  [Reproducibility](#6-reproducibility)
 7.  [My Thoughts](#7-my-thoughts)
+8.  [Declarations](#8-declarations)
 
 ## 1. Data Curation
 
@@ -120,6 +121,18 @@ My core takeaway is the dangerous inconsistency of these 7B-parameter models in 
 
 While I do believe these same models with more parameters (32, 70 or 312B) could yield much better results, the cost of running those would be enormous. I belive, in their current state, these open source (lightweight) models are unsuitable for high student competence roles. Their value more lies in being a productivity tool for human teachers/professors. 
 
-  
+## 8. Declaration
+
+The use of generative AI is declared for repetitive tasks, research and for implementing the 'LLM as a Judge' framework.
+[Google AI Studio](aistudio.google.com) was used with the following settings: 
+1. model = Gemini 2.5 pro
+2. temperature = 0.1
+3. Thinking mode = enabled
+4. Thinking budget = 32768 tokens
+5. Grounding in google search enabled
+6. URL context enabled
+7. Output length = 65536 tokens
+8. Top P value = 0.95
+   
    
 
