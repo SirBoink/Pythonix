@@ -6,7 +6,7 @@ Here, I conduct a rigorous, pairwise evaluation of two open-source Large Languag
 Using an "LLM as a Judge" framework, I analyze each model's performance in identifying bugs, understanding student misconceptions, and guiding them toward solutions without giving away the answer.
 
 ## Research Plan 
-The research plan can be read [here](research_plan.txt)
+The research plan can be read [here](research%20plan.txt)
 
 ## Table of Contents
 1.  [Data Curation](#1-data-curation)
