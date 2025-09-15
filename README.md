@@ -1,11 +1,18 @@
 # Open Source LLM Evaluation For Student Competence Analysis
 My implementation of the python task 3 for the FOSSEE semester long internship
 
-Here, I conduct a rigorous, pairwise evaluation of two open-source Large Language Models (LLMs) that I've chosen: **Qwen-2.5-Coder** and **Code-Llama-7B-instruct** to assess their ability to be high level student competence analysts.
+Here, I conduct a rigorous, pairwise evaluation of two open-source Large Language Models (LLMs) that I've chosen: **[Qwen-2.5-Coder-7B-Instruct](https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct)** and **[Code-Llama-7B-instruct-hf]([https://huggingface.co/codellama/CodeLlama-7b-Instruct-hf])** to assess their ability to be high level student competence analysts.
 
-Using an "LLM as a Judge" framework, we analyze each model's performance in identifying bugs, understanding student misconceptions, and guiding them toward solutions without giving away the answer.
+Using an "LLM as a Judge" framework, I analyze each model's performance in identifying bugs, understanding student misconceptions, and guiding them toward solutions without giving away the answer.
 
-[Research Plan]()
+## Reproducibility
+From the get-go, my major goal was to make this implementation easy for anyone to verify and run. I believe that good research should be verifiable, and you shouldn't need a massive budget or a supercomputer to do it. So: 
+
+1. I stuck to 7B parameter models that are freely available and don't require paid API keys.
+2. The entire evaluation was designed to run on the free tier of Google Colab. Anyone with a Google account can copy and paste the code and verify the results.
+3. The repository includes the models' outputs and the ground truth (as json files), so you can analyze the results without having to re-run the entire pipeline if you don't want to.
+
+[Research Plan](research.txt)
 
 ## Table of Contents
 1.  [Data Curation](#1-data-curation)
@@ -39,9 +46,9 @@ To ensure a structured and pedagogically sound evaluation, I implemented the fol
 We employed an impartial evaluation framework where a more powerful LLM (acting as an expert judge) assesses the quality of the two models' outputs against a ground truth analysis of the student's code.
 
 #### **The "Pythonix" Persona**
-To elicit high-quality, Socratic-style feedback, we developed a system prompt that instructs the models to adopt the persona of "Pythonix," a helpful and encouraging tutor inspired from the world of the comic 'Asterix'.
+To get high-quality, Socratic style feedback, I developed a system prompt that instructs the models to adopt the persona of "Pythonix," a helpful and encouraging tutor inspired from the world of the comic 'Asterix'.
 
-> The system prompt guides the LLM to first analyze the student's code for errors and then generate questions that encourage deeper thinking and lead the student to their own discovery. Without this contextual guidance, the LLMs consistently failed to grasp the nature of the task and would often just provide the corrected code.
+> The system prompt guides the LLM to first analyze the student's code for errors and then generate questions that encourage deeper thinking and lead the student to their own discovery. Without this contextual guidance, I observed that the LLMs consistently failed to grasp the nature of the task and would often just provide the corrected code.
 
 #### **Research-Backed Evaluation Criteria**
 The evaluation rubric was designed based on established frameworks, including:
@@ -62,39 +69,37 @@ We chose two prominent 7B-parameter models based on their cost-effectiveness, co
 
 Across the 10 programming problems evaluated, **Qwen-2.5-Coder was the clear comparative winner.**
 
-*   **Superior Code Analysis:** Qwen demonstrated a more accurate understanding of the student's code, correctly identifying algorithms like recursion and dynamic programming where CodeLlama failed.
-*   **Higher Pedagogical Value:** Qwen's generated prompts were more relevant and effective at guiding the student toward the actual bug or misconception.
-*   **Critical Weakness:** Both models struggled with accuracy. The most significant limitation observed was the tendency to **hallucinate non-existent issues while completely missing fatal errors** (e.g., `IndexError`, `RecursionError`). This is a major concern for reliable student competence analysis.
+*    Qwen demonstrated a more accurate understanding of the student's code, correctly identifying algorithms like recursion and dynamic programming where CodeLlama failed.
+*    Qwen's generated prompts were more relevant and effective at guiding the student toward the actual bug or misconception.
+*    Both models struggled with accuracy. The most significant limitation observed was the tendency to **hallucinate non-existent issues while completely missing fatal errors** (e.g., `IndexError`, `RecursionError`). This is a major concern for reliable student competence analysis.
 
 ## 5. Reasoning
 
 ### What Makes a Model Suitable for Competence Analysis?
 A model's suitability for this task depends on three criteria:
-1.  **Instruction Following:** The ability to adhere to a complex system prompt (like the "Pythonix" persona) is paramount.
-2.  **Coding Data Training:** The model's training data must include a substantial amount of high-quality code to ensure a deep understanding of syntax, logic, and common patterns.
-3.  **Active Maintenance:** An actively developed model is more likely to improve over time, with bug fixes and enhanced capabilities.
+1.  The ability to adhere to a complex system prompt (like the "Pythonix" persona) is paramount.
+2.  The model's training data must include a substantial amount of high-quality code to ensure a deep understanding of syntax, logic, and common patterns.
+3.  The model must be actively maintained as its more likely to improve over time, with bug fixes and enhanced capabilities.
 
 ### How would you test whether a model generates meaningful prompts?
 I found that simply asking the LLM to "find the bug" was ineffective. By creating the **"Pythonix"** persona, I framed the task within a pedagogical context, which was crucial for generating meaningful, Socratic-style prompts.
 
 ### Trade-Offs: Accuracy, Interpretability, and Cost
 The use of lightweight, open-source models introduces significant trade-offs:
-*   **Accuracy vs. Cost:** The 7B parameter size, while cost-effective, limits the models' nuanced understanding. We observed an inverse relationship between the complexity of the programming problem and the accuracy of the model's evaluation.
-*   **Interpretability:** As black boxes, these models do not reveal their internal reasoning. It's difficult to know *why* a model generated a specific prompt, which complicates debugging and refinement. These models are not primarily designed for the kind of reasoning capabilities seen in SOTA models like GPT-5 or Gemini 2.5.
+*   The 7B parameter size, while cost-effective, limits the models' nuanced understanding. We observed an inverse relationship between the complexity of the programming problem and the accuracy of the model's evaluation.
+*   As black boxes, these models do not reveal their internal reasoning (well known problem). It's difficult to know *why* a model generated a specific prompt, which complicates debugging. These models are not primarily designed for the kind of reasoning capabilities seen in SOTA models like GPT-5 or Gemini 2.5.
 
 ### Why did you choose the model you evaluated, and what are its strengths or limitations?
 
-I chose Qwen-2.5-Coder and Codellama-Instruct based on three considerations:
+I chose Qwen-2.5-Coder-Instruct and Codellama-Instruct-hf based on three considerations:
 
 1. Cost: Both models are small enough to be run on free-tier GPU resources (like Google Colab).
 2. Code-Specific Training: Both have been trained on large datasets of code.
 3. Instruction Following: Both have been fine-tuned for following instructions, which is important for adhering to our "Pythonix" system prompt.
  
+## 6. My Thoughts
 
-#Resources Used 
-1. [colab.research.google.com]
-2. aistudio.google.com (Gemini 2.5 Pro; LLM As a Judge)
-3. [https://huggingface.co/codellama/CodeLlama-7b-Instruct-hf]
+
   
    
 
