@@ -24,7 +24,7 @@ The research plan can be read [here](research%20plan.txt)
 
 ## 1. Data Curation
 
-To test the selected lightweight open source models, I collect and formed a representative dataset of student written python code (both correct and buggy) across 5 categories: 
+To test the selected lightweight open source models, I collected and formed a representative dataset of student written python code (both correct and buggy) across 5 categories: 
 
 1. Basic Python Operations (Count vowels and GCD)
 2. String and output formatting (Framed Word and valid parentheses)
@@ -32,14 +32,14 @@ To test the selected lightweight open source models, I collect and formed a repr
 4. Algorithmic thinking (Levensthein and quicksort)
 5. Graphs and DP (Knapsack and Find first sorted item)
 
-The student written code is from [Quixbugs](https://github.com/jkoppel/QuixBugs), [Refactorly](https://github.com/githubhuyang/refactory) and my own personal code submissions attempts from the [Helsinki Python MOOC 2025 course](https://programming-25.mooc.fi). 
+The student written code has been gathered from [Quixbugs](https://github.com/jkoppel/QuixBugs), [Refactorly](https://github.com/githubhuyang/refactory) and my own personal code submission attempts from the [Helsinki Python MOOC 2025 course](https://programming-25.mooc.fi). 
 
 ## 2. The Approach
 
-To ensure a structured and pedagogically sound evaluation, I implemented the following methodology:
+To ensure a structured evaluation, I have implemented the following methodology:
 
 #### **LLM as a Judge Framework**
-We employed an impartial evaluation framework where a more powerful LLM (acting as an expert judge) assesses the quality of the two models' outputs against a ground truth analysis of the student's code.
+An impartial evaluation framework where a more powerful LLM (acting as an expert judge) assesses the quality of the two models' outputs against a ground truth analysis of the student's code.
 
 #### **The "Pythonix" Persona**
 To get high-quality, Socratic style feedback, I developed a system prompt that instructs the models to adopt the persona of "Pythonix," a helpful and encouraging tutor inspired from my favorite comic book 'Asterix'.
@@ -54,7 +54,7 @@ The evaluation rubric was designed based on established frameworks, including:
 
 ## 3. Models Evaluated
 
-We chose two prominent 7B-parameter models based on their cost-effectiveness, code-specific training, and instruction-following capabilities.
+I chose two prominent 7B-parameter models based on their cost-effectiveness, code-specific training, and instruction-following capabilities.
 
 Of course. A more technical and robust table will provide much more context for readers familiar with LLMs.
 
@@ -64,7 +64,7 @@ Here is a revised "Models Evaluated" section. It replaces the original table wit
 
 ## 3. Models Evaluated
 
-We chose two prominent 7B-parameter models for this evaluation, balancing performance on code-related tasks with the accessibility required for cost-free reproducibility. The table below provides a comparison: 
+I chose two prominent 7B-parameter models for this evaluation, balancing performance on code-related tasks with the accessibility required for cost-free reproducibility. The table below provides a comparison: 
 
 | Attribute | Qwen-2.5-Coder-7B-Instruct | CodeLlama-7B-Instruct-hf |
 | :--- | :--- | :--- |
@@ -82,13 +82,13 @@ Across the 10 programming problems evaluated, **Qwen-2.5-Coder was the clear com
 
 *    Qwen demonstrated a more accurate understanding of the student's code, correctly identifying algorithms like recursion and dynamic programming where CodeLlama failed.
 *    Qwen's generated prompts were more relevant and effective at guiding the student toward the actual bug or misconception.
-*    Both models struggled with accuracy. The most significant limitation observed was the tendency to **hallucinate non-existent issues while completely missing fatal errors** (e.g., `IndexError`, `RecursionError`). This is a major concern for reliable student competence analysis.
+*    Both models struggled with accuracy. The most significant limitation observed was the tendency to **hallucinate non-existent issues while completely missing fatal errors** (`IndexError`, `RecursionError`). This is a major concern for reliable student competence analysis.
 
 ## 5. Reasoning
 
 ### What Makes a Model Suitable for Competence Analysis?
 A model's suitability for this task depends on three criteria:
-1.  The ability to adhere to a complex system prompt (like the "Pythonix" persona) is paramount.
+1.  The ability to adhere to a complex system prompt (like for the "Pythonix" persona) or instruction following.
 2.  The model's training data must include a substantial amount of high-quality code to ensure a deep understanding of syntax, logic, and common patterns.
 3.  The model must be actively maintained as its more likely to improve over time, with bug fixes and enhanced capabilities.
 
