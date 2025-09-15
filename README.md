@@ -9,6 +9,7 @@ Using an "LLM as a Judge" framework, I analyze each model's performance in ident
 The research plan can be read [here](research%20plan.txt)
 
 ## Table of Contents
+
 1.  [Data Curation](#1-data-curation)
 2.  [The Approach](#2-the-approach)
 3.  [Models Evaluated](#3-models-evaluated)
@@ -16,10 +17,10 @@ The research plan can be read [here](research%20plan.txt)
 5.  [Reasoning](#5-reasoning)
     *   [What Makes a Model Suitable for Competence Analysis?](#what-makes-a-model-suitable-for-competence-analysis)
     *   [How would you test whether a model generates meaningful prompts?](#how-would-you-test-whether-a-model-generates-meaningful-prompts)
-    *   [What trade-offs might exist between accuracy, interpretability, and cost?](#what-trade-offs-might-exist-between-accuracy,-interpretability,-and-cost)
-    *   [Why did you choose the model you evaluated, and what are its strengths or limitations?](#why-did-you-choose-the-model-you-evaluated-and-want-are-its-strengths-or-limitations)
-6.   [Reproducibility](6-#reproducibility)
-7.   [My Thoughts](#7-my-thoughts)
+    *   [What trade-offs might exist between accuracy, interpretability, and cost?](#what-trade-offs-might-exist-between-accuracy-interpretability-and-cost)
+    *   [Why did you choose the model you evaluated, and what are its strengths or limitations?](#why-did-you-choose-the-model-you-evaluated-and-what-are-its-strengths-or-limitations)
+6.  [Reproducibility](#6-reproducibility)
+7.  [My Thoughts](#7-my-thoughts)
 
 ## 1. Data Curation
 
