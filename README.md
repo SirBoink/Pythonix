@@ -1,26 +1,25 @@
 # Open Source LLM Evaluation For Student Competence Analysis
 My implementation of the python task 3 for the FOSSEE semester long internship
 
-[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/release/python-390/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-This project conducts a rigorous, pairwise evaluation of two open-source Large Language Models (LLMs)—**Qwen-2.5-Coder** and **Code-Llama-7B-instruct**—to assess their ability to provide meaningful pedagogical feedback on student-written Python code.
+Here, I conduct a rigorous, pairwise evaluation of two open-source Large Language Models (LLMs) that I've chosen: **Qwen-2.5-Coder** and **Code-Llama-7B-instruct** to assess their ability to be high level student competence analysts.
 
 Using an "LLM as a Judge" framework, we analyze each model's performance in identifying bugs, understanding student misconceptions, and guiding them toward solutions without giving away the answer.
 
+[Research Plan]()
+
 ## Table of Contents
-1.  [Data Curation](#1-Data-Curation)
+1.  [Data Curation](#1-data-curation)
 2.  [The Approach](#2-the-approach)
 3.  [Models Evaluated](#3-models-evaluated)
 4.  [Key Findings](#4-key-findings)
-5.  [Reasoning](#5-Reasoning)
+5.  [Reasoning](#5-reasoning)
     *   [What Makes a Model Suitable for Competence Analysis?](#what-makes-a-model-suitable-for-competence-analysis)
     *   [How would you test whether a model generates meaningful prompts?](#How-would-you-test-whether-a-model-generates-meaningful-prompts?)
     *   [Trade-Offs: Accuracy, Interpretability, and Cost](#trade-offs-accuracy-interpretability-and-cost)
-    *   [Why did you choose the model you evaluated, and what are its strengths or limitations?](#why-did-you-choose-the-model)
-6.  [How to Replicate](#6-how-to-replicate)
+    *   [Why did you choose the model you evaluated, and what are its strengths or limitations?](#why-did-you-choose-the-model-you-evaluated-and-want-are-its-strengths-or-limitations?)
+6.  [My Thoughts](#6-my-thoughts)
 
-## Data Curation
+## 1. Data Curation
 
 To test the selected lightweight open source models, I collect and formed a representative dataset of student written python code (both correct and buggy) across 5 categories: 
 
@@ -30,7 +29,7 @@ To test the selected lightweight open source models, I collect and formed a repr
 4. Algorithmic thinking (Levensthein and quicksort)
 5. Graphs and DP (Knapsack and Find first sorted item)
 
-The code is from Quixbugs, Refactorly and my own attempts from the Helsinki Python MOOC 2025 course. 
+The student written code is from [Quixbugs](https://github.com/jkoppel/QuixBugs), [Refactorly](https://github.com/githubhuyang/refactory) and my own personal code submissions attempts from the [Helsinki Python MOOC 2025 course](https://programming-25.mooc.fi). 
 
 ## 2. The Approach
 
