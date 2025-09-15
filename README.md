@@ -5,14 +5,7 @@ Here, I conduct a rigorous, pairwise evaluation of two open-source Large Languag
 
 Using an "LLM as a Judge" framework, I analyze each model's performance in identifying bugs, understanding student misconceptions, and guiding them toward solutions without giving away the answer.
 
-## Reproducibility
-From the get-go, my major goal was to make this implementation easy for anyone to verify and run. I also believe you shouldn't need a massive budget or a supercomputer to do it. So: 
-
-1. I stuck to 7B parameter models that are freely available and don't require paid API keys.
-2. The entire evaluation was designed to run on the free tier of Google Colab. Anyone with a Google account can copy and paste the code and verify the results.
-3. The repository includes the models' outputs and the ground truth (as json files), so you can analyze the results without having to re-run the entire pipeline if you don't want to.
-
-[Research Plan](research.txt)
+# [Research Plan](research.txt)
 
 ## Table of Contents
 1.  [Data Curation](#1-data-curation)
@@ -24,7 +17,8 @@ From the get-go, my major goal was to make this implementation easy for anyone t
     *   [How would you test whether a model generates meaningful prompts?](#How-would-you-test-whether-a-model-generates-meaningful-prompts?)
     *   [What trade-offs might exist between accuracy, interpretability, and cost?](#What-trade-offs-might-exist-between-accuracy,-interpretability,-and-cost?)
     *   [Why did you choose the model you evaluated, and what are its strengths or limitations?](#why-did-you-choose-the-model-you-evaluated-and-want-are-its-strengths-or-limitations?)
-6.  [My Thoughts](#6-my-thoughts)
+6.   [Reproducibility](#reproducibility)
+7.   [My Thoughts](#6-my-thoughts)
 
 ## 1. Data Curation
 
@@ -96,8 +90,15 @@ I chose Qwen-2.5-Coder-Instruct and Codellama-Instruct-hf based on three conside
 1. Cost: Both models are small enough to be run on free-tier GPU resources (like Google Colab).
 2. Code-Specific Training: Both have been trained on large datasets of code.
 3. Instruction Following: Both have been fine-tuned for following instructions, which is important for adhering to our "Pythonix" system prompt.
- 
-## 6. My Thoughts
+
+## 6. Reproducibility
+From the get-go, my major goal was to make this implementation easy for anyone to verify and run. I also believe you shouldn't need a massive budget or a supercomputer to do it. So: 
+
+1. I stuck to 7B parameter models that are freely available and lightweight.
+2. The entire evaluation was designed to run on the free tier of Google Colab. Anyone with a Google account can copy and paste the code and verify the results.
+3. The repository includes the models' outputs and the ground truth (as json files), so you can analyze the results without having to re-run the entire pipeline if you don't want to.
+
+## 7. My Thoughts
 My core takeaway is the dangerous inconsistency of these 7B-parameter models in this context. Their performance is a paradox of insight and failure. On one hand, the potential is undeniable. When Qwen 2.5 generated a question about how the quicksort implementation handles duplicate numbers, the exact logical flaw in the code, it demonstrated a spark of what I was looking for.  However, this results was standalone and unreliable. The same models that showed this spark also completely failed to detect fatal flaws like the RecursionError in the GCD function or IndexError in the binary search. Also, CodeLlama's repeated misidentification of recursion as a for loop reveals a shallow, pattern-matching-based understanding. 
 
 While I do believe these same models with more parameters (32, 70 or 312B) could yield much better results, the cost of running those would be enormous. I belive, in their current state, these open source (lightweight) models are unsuitable for high student competence roles. Their value more lies in being a productivity tool for human teachers/professors. 
