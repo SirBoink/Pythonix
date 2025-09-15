@@ -21,7 +21,7 @@ The research plan can be read [here](research%20plan.txt)
     *   [Why did you choose the model you evaluated, and what are its strengths or limitations?](#why-did-you-choose-the-model-you-evaluated-and-what-are-its-strengths-or-limitations)
 6.  [Reproducibility](#6-reproducibility)
 7.  [My Thoughts](#7-my-thoughts)
-8.  [Declarations](#8-declarations)
+8.  [Declaration](#8-declaration)
 
 ## 1. Data Curation
 
