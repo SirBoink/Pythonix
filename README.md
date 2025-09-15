@@ -15,11 +15,11 @@ The research plan can be read [here](research-plan.txt)
 4.  [Key Findings](#4-key-findings)
 5.  [Reasoning](#5-reasoning)
     *   [What Makes a Model Suitable for Competence Analysis?](#what-makes-a-model-suitable-for-competence-analysis)
-    *   [How would you test whether a model generates meaningful prompts?](#How-would-you-test-whether-a-model-generates-meaningful-prompts?)
-    *   [What trade-offs might exist between accuracy, interpretability, and cost?](#What-trade-offs-might-exist-between-accuracy,-interpretability,-and-cost?)
-    *   [Why did you choose the model you evaluated, and what are its strengths or limitations?](#why-did-you-choose-the-model-you-evaluated-and-want-are-its-strengths-or-limitations?)
-6.   [Reproducibility](#reproducibility)
-7.   [My Thoughts](#6-my-thoughts)
+    *   [How would you test whether a model generates meaningful prompts?](#how-would-you-test-whether-a-model-generates-meaningful-prompts)
+    *   [What trade-offs might exist between accuracy, interpretability, and cost?](#what-trade-offs-might-exist-between-accuracy,-interpretability,-and-cost)
+    *   [Why did you choose the model you evaluated, and what are its strengths or limitations?](#why-did-you-choose-the-model-you-evaluated-and-want-are-its-strengths-or-limitations)
+6.   [Reproducibility](6-#reproducibility)
+7.   [My Thoughts](#7-my-thoughts)
 
 ## 1. Data Curation
 
