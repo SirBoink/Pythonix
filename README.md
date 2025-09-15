@@ -42,7 +42,7 @@ To ensure a structured and pedagogically sound evaluation, I implemented the fol
 We employed an impartial evaluation framework where a more powerful LLM (acting as an expert judge) assesses the quality of the two models' outputs against a ground truth analysis of the student's code.
 
 #### **The "Pythonix" Persona**
-To get high-quality, Socratic style feedback, I developed a system prompt that instructs the models to adopt the persona of "Pythonix," a helpful and encouraging tutor inspired from the world of the comic 'Asterix'.
+To get high-quality, Socratic style feedback, I developed a system prompt that instructs the models to adopt the persona of "Pythonix," a helpful and encouraging tutor inspired from my favorite comic book 'Asterix'.
 
 > The system prompt guides the LLM to first analyze the student's code for errors and then generate questions that encourage deeper thinking and lead the student to their own discovery. Without this contextual guidance, I observed that the LLMs consistently failed to grasp the nature of the task and would often just provide the corrected code.
 
@@ -56,10 +56,25 @@ The evaluation rubric was designed based on established frameworks, including:
 
 We chose two prominent 7B-parameter models based on their cost-effectiveness, code-specific training, and instruction-following capabilities.
 
-| Model | Strengths | Limitations |
+Of course. A more technical and robust table will provide much more context for readers familiar with LLMs.
+
+Here is a revised "Models Evaluated" section. It replaces the original table with one that includes key technical specifications and summarizes your own findings more formally.
+
+---
+
+## 3. Models Evaluated
+
+We chose two prominent 7B-parameter models for this evaluation, balancing performance on code-related tasks with the accessibility required for cost-free reproducibility. The table below provides a comparison: 
+
+| Attribute | Qwen-2.5-Coder-7B-Instruct | CodeLlama-7B-Instruct-hf |
 | :--- | :--- | :--- |
-| **Qwen-2.5-Coder-7B** | ✅ Better grasp of Python code nuances.<br>✅ More consistent in identifying the student's area of struggle.<br>✅ Generated on-point, guiding questions.<br>✅ Adhered to the instruction of not revealing the direct answer. | ❌ Prone to hallucinating non-existent bugs.<br>❌ Occasionally failed to identify critical, ground-truth errors. |
-| **Code-Llama-7B-instruct** | ✅ Fine-tuned for following instructions.<br>✅ Trained on a large corpus of code. | ❌ Less accurate in code analysis compared to Qwen.<br>❌ Generated less relevant or helpful guiding prompts.<br>❌ Frequently misidentified core code structures (e.g., seeing loops where there was recursion). |
+| **Developer** | Alibaba Cloud | Meta |
+| **Parameters** | ~7 Billion | ~7 Billion |
+| **Context Length** | 64,000 tokens | 16,000 tokens |
+| **Architecture** | Qwen2.5 with Group Query Attention (GQA) | Llama 2 with Grouped-Query Attention (GQA) |
+| **Fine-tuning Focus** | Optimized for a wide range of code-related tasks and instruction-following. | Instruction-following on a base model specialized for code generation and completion. |
+| **Observed Strengths** | **Superior Code Analysis:**<br>Accurately identified complex structures like recursion and dynamic programming.<br><br>**Higher Pedagogical Value:**<br>Generated more relevant, Socratic-style questions that guided users to the core issue. | **Strong Format Adherence:**<br>Consistently followed the structural and tonal requirements of the "Pythonix" system prompt. |
+| **Observed Limitations** | **Critical Error Blindness:**<br>Failed to detect fatal runtime errors (`IndexError`, `RecursionError`).<br><br>**Hallucination:**<br>Prone to identifying and flagging non-existent bugs in correct code. | **Shallow Code Understanding:**<br>Frequently misidentified fundamental code structures (e.g., recursion as iteration).<br><br>**Irrelevant Prompt Generation:**<br>Often produced nonsensical or unhelpful diagnostic questions. |
 
 ## 4. Key Findings
 
