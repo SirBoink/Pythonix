@@ -1,12 +1,12 @@
 # Open Source LLM Evaluation For Student Competence Analysis
 My implementation of the python task 3 for the FOSSEE semester long internship
 
-Here, I conduct a rigorous, pairwise evaluation of two open-source Large Language Models (LLMs) that I've chosen: **[Qwen-2.5-Coder-7B-Instruct](https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct)** and **[Code-Llama-7B-instruct-hf]([https://huggingface.co/codellama/CodeLlama-7b-Instruct-hf])** to assess their ability to be high level student competence analysts.
+Here, I conduct a rigorous, pairwise evaluation of two open-source Large Language Models (LLMs) that I've chosen: **[Qwen-2.5-Coder-7B-Instruct](https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct)** and **[Code-Llama-7B-instruct-hf](https://huggingface.co/codellama/CodeLlama-7b-Instruct-hf)** to assess their ability to be high level student competence analysts.
 
 Using an "LLM as a Judge" framework, I analyze each model's performance in identifying bugs, understanding student misconceptions, and guiding them toward solutions without giving away the answer.
 
 ## Reproducibility
-From the get-go, my major goal was to make this implementation easy for anyone to verify and run. I believe that good research should be verifiable, and you shouldn't need a massive budget or a supercomputer to do it. So: 
+From the get-go, my major goal was to make this implementation easy for anyone to verify and run. I also believe you shouldn't need a massive budget or a supercomputer to do it. So: 
 
 1. I stuck to 7B parameter models that are freely available and don't require paid API keys.
 2. The entire evaluation was designed to run on the free tier of Google Colab. Anyone with a Google account can copy and paste the code and verify the results.
@@ -22,7 +22,7 @@ From the get-go, my major goal was to make this implementation easy for anyone t
 5.  [Reasoning](#5-reasoning)
     *   [What Makes a Model Suitable for Competence Analysis?](#what-makes-a-model-suitable-for-competence-analysis)
     *   [How would you test whether a model generates meaningful prompts?](#How-would-you-test-whether-a-model-generates-meaningful-prompts?)
-    *   [Trade-Offs: Accuracy, Interpretability, and Cost](#trade-offs-accuracy-interpretability-and-cost)
+    *   [What trade-offs might exist between accuracy, interpretability, and cost?](#What-trade-offs-might-exist-between-accuracy,-interpretability,-and-cost?)
     *   [Why did you choose the model you evaluated, and what are its strengths or limitations?](#why-did-you-choose-the-model-you-evaluated-and-want-are-its-strengths-or-limitations?)
 6.  [My Thoughts](#6-my-thoughts)
 
@@ -84,7 +84,7 @@ A model's suitability for this task depends on three criteria:
 ### How would you test whether a model generates meaningful prompts?
 I found that simply asking the LLM to "find the bug" was ineffective. By creating the **"Pythonix"** persona, I framed the task within a pedagogical context, which was crucial for generating meaningful, Socratic-style prompts.
 
-### Trade-Offs: Accuracy, Interpretability, and Cost
+### What trade-offs might exist between accuracy, interpretability, and cost?
 The use of lightweight, open-source models introduces significant trade-offs:
 *   The 7B parameter size, while cost-effective, limits the models' nuanced understanding. We observed an inverse relationship between the complexity of the programming problem and the accuracy of the model's evaluation.
 *   As black boxes, these models do not reveal their internal reasoning (well known problem). It's difficult to know *why* a model generated a specific prompt, which complicates debugging. These models are not primarily designed for the kind of reasoning capabilities seen in SOTA models like GPT-5 or Gemini 2.5.
@@ -98,7 +98,9 @@ I chose Qwen-2.5-Coder-Instruct and Codellama-Instruct-hf based on three conside
 3. Instruction Following: Both have been fine-tuned for following instructions, which is important for adhering to our "Pythonix" system prompt.
  
 ## 6. My Thoughts
+My core takeaway is the dangerous inconsistency of these 7B-parameter models in this context. Their performance is a paradox of insight and failure. On one hand, the potential is undeniable. When Qwen 2.5 generated a question about how the quicksort implementation handles duplicate numbers, the exact logical flaw in the code, it demonstrated a spark of what I was looking for.  However, this results was standalone and unreliable. The same models that showed this spark also completely failed to detect fatal flaws like the RecursionError in the GCD function or IndexError in the binary search. Also, CodeLlama's repeated misidentification of recursion as a for loop reveals a shallow, pattern-matching-based understanding. 
 
+While I do believe these same models with more parameters (32, 70 or 312B) could yield much better results, the cost of running those would be enormous. I belive, in their current state, these open source (lightweight) models are unsuitable for high student competence roles. Their value more lies in being a productivity tool for human teachers/professors. 
 
   
    
